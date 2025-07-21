@@ -2,57 +2,72 @@ import React from 'react'
 
 export default function Login() {
     return (
-        <div className="h-screen w-screen flex justify-center items-center">
-            <div id="back-div"
-                className="bg-gradient-to-r from-blue-500 to-purple-500 rounded-[26px] m-4">
-                <div className="border-[20px] border-transparent rounded-[20px] bg-white shadow-lg xl:p-10 2xl:p-10 lg:p-10 md:p-10 sm:p-2 m-2">
-                    <h1 className="pt-8 pb-6 font-bold  text-5xl text-center cursor-default">
-                        Log in
-                    </h1>
-                    <form action="#" method="post" className="space-y-4">
-                        <div>
-                            <label for="email" className="mb-2  text-lg">Email</label>
+        <div className="min-h-screen w-screen flex justify-center items-center p-4">
+            {/* 그라데이션 테두리 효과를 위한 바깥쪽 div */}
+            {/* 안쪽 div와 바깥쪽 div의 padding 차이로 테두리를 만듭니다. */}
+            <div className="bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl p-1">
+                {/* 실제 로그인 폼이 들어가는 흰색 카드 div */}
+                <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                    <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">
+                        Log in </h1>
+                    {/* space-y-6: 자식 요소들 사이에 균일한 수직 간격을 줍니다. */}
+                    <form action="#" method="post" className="space-y-6">
+
+                        {/* Email 입력 그룹 */}
+                        <div className="flex flex-col space-y-2">
+                            <label htmlFor="email" className="text-sm font-medium text-gray-700">Email</label>
                             <input
                                 id="email"
-                                class="border p-3 dark:bg-indigo-700  shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
+                                className="w-full rounded-lg border border-gray-300 p-3 text-base
+                                   focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                                 type="email"
-                                placeholder="Email"
-                                required />
+                                placeholder="your@email.com"
+                                required
+                            />
                         </div>
-                        <div>
-                            <label for="password" className="mb-2  text-lg">Password</label>
+
+                        {/* Password 입력 그룹 */}
+                        <div className="flex flex-col space-y-2">
+                            <label htmlFor="password" className="text-sm font-medium text-gray-700">Password</label>
                             <input
                                 id="password"
-                                className="border p-3 shadow-md dark:bg-indigo-700  placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
+                                className="w-full rounded-lg border border-gray-300 p-3 text-base
+                                   focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                                 type="password"
                                 placeholder="Password"
-                                required />
+                                required
+                            />
                         </div>
-                        <a className="group text-blue-400 transition-all duration-100 ease-in-out"
-                            href="#">
-                            <span className="bg-left-bottom bg-gradient-to-r text-sm from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-                                Forget your password?
-                            </span>
-                        </a>
-                        <button className="bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg mt-6 p-2 text-white rounded-lg w-full hover:scale-105 hover:from-purple-500 hover:to-blue-500 transition duration-300 ease-in-out"
-                            type="submit">
+
+                        {/* 비밀번호 찾기 링크 (오른쪽 정렬) */}
+                        <div className="text-right">
+                            <a href="#" className="text-sm text-blue-500 hover:underline">
+                                Forgot your password?
+                            </a>
+                        </div>
+
+                        {/* 로그인 버튼 */}
+                        <button
+                            className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold py-3 rounded-lg
+                               hover:from-purple-500 hover:to-blue-500 hover:scale-105 transition-all duration-300 ease-in-out
+                               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+                            type="submit"
+                        >
                             LOG IN
                         </button>
                     </form>
-                    <div className="flex flex-col mt-4 items-center justify-center text-sm">
-                        <h3>
+
+                    {/* 회원가입 링크 */}
+                    <div className="mt-6 text-center text-sm text-gray-600">
+                        <p>
                             Don't have an account?
-                            <a className="group text-blue-400 transition-all duration-100 ease-in-out"
-                                href="#">
-                                <span className="bg-left-bottom bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-                                    Sign Up
-                                </span>
+                            <a href="#" className="font-semibold text-blue-500 hover:underline ml-1">
+                                Sign Up
                             </a>
-                        </h3>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-
     )
 }
