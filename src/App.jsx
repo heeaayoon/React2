@@ -7,7 +7,7 @@ import Subway from './component/Subway'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter> 
       <div className="w-full xl:w-8/10 h-screen mx-auto flex flex-col justify-start items-start">
         <Nav />
         <main className="w-full flex-grow
