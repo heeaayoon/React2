@@ -14,12 +14,12 @@ export default function Subway() {
     //데이터 패치하기 
     const getFetchData = async(aIndex)=>{
         const baseUrl = 'https://apis.data.go.kr/6260000/IndoorAirQuality/getIndoorAirQualityByStation?'
-        let url = `${baseUrl}serviceKey=${import.meta.env.VITE_DATA_API}&pageNo=1&numOfRows=12&resultType=json&controlnumber=20250723`;
+        let url = `${baseUrl}serviceKey=${import.meta.env.VITE_DATA_API}&pageNo=1&numOfRows=100&resultType=json&controlnumber=20250723`;
         if (aIndex) {
             url += `&areaIndex=${aIndex}`;
         }
         console.log(url) //url이 제대로 만들어졌는지 확인
-        
+
         const resp = await fetch(url); 
         const data = await resp.json(); 
         //console.log(data) //url 내부 데이터 전부
@@ -31,8 +31,8 @@ export default function Subway() {
     //처음에 데이터 패치하기
     useEffect(()=>{
       getFetchData();
-      if (sRef.current.value=="")
-        return; 
+      // if (sRef.current.value=="")
+      //   return; 
     },[])
 
 
