@@ -33,10 +33,13 @@ export default function Nav() {
             </Link>}
             </ul>
         </div>
+        {/* //로그아웃 상태일때만 이 div 태그를 클릭하면 로그인 페이지로 이동 */}
+        {/* <Link to = "/login">  */}
         <div className='mr-10 border-4 border-indigo-100 rounded-3xl text-xl font-bold p-2'>
             {login ? <span className='hover:cursor-pointer' 
                             onClick={handleLogout}>로그아웃</span> : "로그인" } 
         </div>
+        {/* </Link> */}
     </header>
   )
 }
