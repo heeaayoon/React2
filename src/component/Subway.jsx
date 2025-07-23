@@ -8,14 +8,18 @@ export default function Subway() {
 
     const [tdata, setTdata] = useState([]); //전체 데이터
     const [tag, setTag] = useState([]);//화면에 변경되면서 출력될 내용
+    const [selectedArea, setSelectedArea] = useState(null);  //선택된 지역의 코드 
 
     //https://apis.data.go.kr/6260000/IndoorAirQuality/getIndoorAirQualityByStation?serviceKey=%2BDfR5vwd9zvwFHbjCUyNLBbgz8fZB10VqCKEzRJ5U3JyXCq8p78agCH5sd5ZF62Jgg5ma2pmDXPUnD%2FBzoT%2Fhg%3D%3D&pageNo=1&numOfRows=12&resultType=json&controlnumber=20250723&areaIndex=201193
     //데이터 패치하기 
-    const getFetchData = async()=>{
+    const getFetchData = async(aIndex)=>{
         const baseUrl = 'https://apis.data.go.kr/6260000/IndoorAirQuality/getIndoorAirQualityByStation?'
-        let url = `${baseUrl}serviceKey=${import.meta.env.VITE_DATA_API}&pageNo=1&numOfRows=12&resultType=json&controlnumber=20250723&areaIndex=201193`;
-        
+        let url = `${baseUrl}serviceKey=${import.meta.env.VITE_DATA_API}&pageNo=1&numOfRows=12&resultType=json&controlnumber=20250723`;
+        if (aIndex) {
+            url += `&areaIndex=${aIndex}`;
+        }
         console.log(url) //url이 제대로 만들어졌는지 확인
+        
         const resp = await fetch(url); 
         const data = await resp.json(); 
         //console.log(data) //url 내부 데이터 전부
@@ -26,7 +30,9 @@ export default function Subway() {
 
     //처음에 데이터 패치하기
     useEffect(()=>{
-        getFetchData();
+      getFetchData();
+      if (sRef.current.value=="")
+        return; 
     },[])
 
 
@@ -35,7 +41,7 @@ export default function Subway() {
       // console.log(scode)
       // console.log(scode.co.name)
       //옵션에서 선택한 항목의 데이터만 가져오기 위한 작업 -> 여기서 areaIndex가 sarea 에 해당하는 값만 가져오기
-      let tm = tdata.filter(item => item['areaIndex']==sRef.current.value) //sRef값과 동일한 데이터만 filter
+      let tm = tdata.filter(item => item['areaIndex']==parseInt(sRef.current.value)) //sRef값과 동일한 데이터만 filter
       console.log(tm)
       tm = tm.map(item => (
           <tr className= "bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 hover:text-black hover:cursor-pointer"
@@ -62,8 +68,9 @@ export default function Subway() {
         <TailSelect selRef = {sRef}
                     handleSel = {handleS} //select 박스에 변화가 생기면(option이 선택되면) -> handleS 함수가 실행됨
                     defaultOp = "---측정소 선택---"
-                    opv = {sarea.코드}
-                    opt = {sarea.측정소}/>
+                    options={sarea}        
+                    v1="코드"       
+                    v2="측정소"/>
       </div>
       <div>
         <table className="mt-10 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

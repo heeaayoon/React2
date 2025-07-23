@@ -1,4 +1,4 @@
-export default function TailSelect({selRef, handleSel, defaultOp, option}) {
+export default function TailSelect({selRef, handleSel, defaultOp, options, v1, v2 }) {
 
   return (
     <div>
@@ -9,8 +9,8 @@ export default function TailSelect({selRef, handleSel, defaultOp, option}) {
                 
                 <option>{defaultOp}</option> 
                 {
-                    opv.map((item) => <option key = {item} 
-                                              value={item}>{opt}</option>)
+                    options.map((item) => <option key = {item[v1]} 
+                                              value={item[v1]}>{item[v2]}</option>)
                 }
         </select >
     </div>
