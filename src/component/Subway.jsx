@@ -1,6 +1,6 @@
 import sarea from '../db/sarea.json'
 import scode from '../db/scode.json'
-import TailSelect from '../ui/TailSelect'
+import TailSelect from '../ui/TailSelect2'
 import { useRef, useState, useEffect } from 'react'
 
 export default function Subway() {
@@ -31,11 +31,11 @@ export default function Subway() {
 
 
     const handleS = () =>{
-      console.log(sRef.current.value) //선택한 측정소 확인 -> 여기서 url이 바껴야함? &areaIndex=??
+      console.log(sRef.current.value) //선택한 측정소 확인 
       // console.log(scode)
       // console.log(scode.co.name)
-      //옵션에서 선택한 항목의 데이터만 가져오기 위한 작업
-      let tm = tdata.filter(item => item['category']==sRef.current.value) //selRef값과 동일한 데이터만 filter
+      //옵션에서 선택한 항목의 데이터만 가져오기 위한 작업 -> 여기서 areaIndex가 sarea 에 해당하는 값만 가져오기
+      let tm = tdata.filter(item => item['areaIndex']==sRef.current.value) //sRef값과 동일한 데이터만 filter
       console.log(tm)
       tm = tm.map(item => (
           <tr className= "bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 hover:text-black hover:cursor-pointer"

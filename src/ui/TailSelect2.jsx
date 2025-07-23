@@ -1,4 +1,4 @@
-export default function TailSelect({selRef, handleSel, defaultOp, opv, opt}) {
+export default function TailSelect({selRef, handleSel, defaultOp, option}) {
 
   return (
     <div>
