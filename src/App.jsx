@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './component/Home'
 import Login from './component/Login'
 import Subway from './component/Subway'
+import Rest from './component/Rest'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path = "/" element={<Home/>} />
             <Route path = "/login" element={<Login/>} />
             <Route path = "/subway" element={<Subway/>} />
+            <Route path = "/rest" element={<Rest/>} />
           </Routes>
         </main>
         <footer className="w-full min-h-20 bg-black text-white flex justify-center items-center">
