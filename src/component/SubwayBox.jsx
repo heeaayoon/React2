@@ -20,7 +20,7 @@ export default function SubwayBox({item}) {
       ));
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-row border rounded-lg shadow-md'>
        {tags}
     </div>
   )
