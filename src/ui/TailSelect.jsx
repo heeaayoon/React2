@@ -1,5 +1,4 @@
 export default function TailSelect({selRef, handleSel, defaultOp, opv, opt}) {
-
   return (
     <div>
         <select defaultValue=""
@@ -9,8 +8,11 @@ export default function TailSelect({selRef, handleSel, defaultOp, opv, opt}) {
                 
                 <option>{defaultOp}</option> 
                 {
-                    opv.map((item) => <option key = {item} 
-                                              value={item}>{opt}</option>)
+                    // opv.map((item) => <option key = {item} 
+                    //                           value={item}>{opt}</option>)
+
+                    opv.map((item, idx) => <option key = {item} 
+                                              value={item}>{opt[idx]}</option>)
                 }
         </select >
     </div>
