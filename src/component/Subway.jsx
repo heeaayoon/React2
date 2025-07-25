@@ -4,11 +4,11 @@ import SubwayBox from './SubwayBox';
 import { useRef, useState, useEffect } from 'react'
 
 export default function Subway() {
+  
+    const [tdata, setTdata] = useState([]); //전체 데이터
     const sRef = useRef(); //변경(선택)할 부분
     const sareaCode = sarea.map(item=>item["코드"]) //원래의 <TailSelect> 를 쓰기 위해
     const sareaArea = sarea.map(item=>item["측정소"])
-
-    const [tdata, setTdata] = useState([]); //전체 데이터
 
     //데이터 패치하기 
     const getFetchData = async()=>{
@@ -47,8 +47,9 @@ export default function Subway() {
                     opt = {sareaArea} />
       </div>
       <div className='w-full flex flex-col mt-10 gap-4'>
-        {tdata.map(item => <SubwayBox key={item.controlnumber}
-                                      item = {item} />)}
+        {tdata.map((item,idx) => <SubwayBox key={item.controlnumber}
+                                            idx = {idx}
+                                            item = {item} />)}
       </div>
     </div>
   )
