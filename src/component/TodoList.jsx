@@ -6,7 +6,7 @@ export default function TodoList() {
     
     const [tdata, setTdata] = useState([]); //전체 데이터
 
-    const url = 'http://localhost:3005/posts';
+    const url = 'http://localhost:3005/todos';
     const getData = async()=>{
         const {data} = await axios.get(url) ; //axios 사용해서 패치하기
         setTdata(data); //필요한 데이터만 tdata에 업데이트 
