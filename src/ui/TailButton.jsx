@@ -12,17 +12,15 @@ export default function TailButton({caption, color, onHandle}) {
   }
 
   return (
-    <div>
-      <button className={`p-3 rounded-xl
-                       text-white
-                        hover:cursor-pointer
-                        hover:font-bold
-                        mx-2 
-                        ${bghover[color]}
-                        ${bg[color]}`}
-              onClick={onHandle}>
-        {caption}
-      </button>
-    </div>
+    <button className={`p-3 rounded-xl
+                      text-white
+                      hover:cursor-pointer
+                      hover:font-bold
+                      mx-2 
+                      ${bghover[color]}
+                      ${bg[color]}`}
+            onClick={onHandle}>
+      {caption}
+    </button>
   )
 }
